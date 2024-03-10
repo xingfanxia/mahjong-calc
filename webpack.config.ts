@@ -2,6 +2,7 @@ import { resolve } from 'path';
 import CopyPlugin from 'copy-webpack-plugin'; // eslint-disable-line import/default
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { DefinePlugin } from 'webpack';
 import { GenerateSW } from 'workbox-webpack-plugin';
 import type { Configuration as WebpackConfiguration } from 'webpack';
 import type { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
@@ -83,8 +84,8 @@ const config: Configuration = {
     //   overlay: true, // Show compilation errors in the browser overlay
     // },
     // open: true, // Open the browser after the server starts
-    compress: true, // Enable gzip compression
-    historyApiFallback: true // Fallback to index.html for Single Page Applications
+    compress: true // Enable gzip compression
+    // historyApiFallback: true // Fallback to index.html for Single Page Applications
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -101,7 +102,10 @@ const config: Configuration = {
             cleanupOutdatedCaches: true
           })
         ]
-      : [])
+      : []),
+    new DefinePlugin({
+      COMMIT_HASH: JSON.stringify('DOCKER_TEST')
+    })
   ],
   devtool: NODE_ENV === 'development' ? 'inline-source-map' : false,
   experiments: {
