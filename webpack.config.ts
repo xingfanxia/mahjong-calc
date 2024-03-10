@@ -83,14 +83,7 @@ const config: Configuration = {
             cleanupOutdatedCaches: true
           })
         ]
-      : []),
-    new DefinePlugin({
-      COMMIT_HASH: JSON.stringify(
-        execFileSync('git', ['rev-parse', 'HEAD'], {
-          encoding: 'utf-8'
-        }).trim()
-      )
-    })
+      : [])
   ],
   devtool: NODE_ENV === 'development' ? 'inline-source-map' : false,
   experiments: {
