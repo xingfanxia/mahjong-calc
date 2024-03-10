@@ -3,7 +3,12 @@ import CopyPlugin from 'copy-webpack-plugin'; // eslint-disable-line import/defa
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { GenerateSW } from 'workbox-webpack-plugin';
-import type { Configuration } from 'webpack';
+import type { Configuration as WebpackConfiguration } from 'webpack';
+import type { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
+
+interface Configuration extends WebpackConfiguration {
+  devServer?: WebpackDevServerConfiguration;
+}
 
 const NODE_ENV =
   process.env.NODE_ENV === 'production' ? 'production' : 'development';
@@ -66,6 +71,20 @@ const config: Configuration = {
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx']
+  },
+  devServer: {
+    allowedHosts: 'all', // Allow access from all hosts
+    // Other possible devServer configurations...
+    static: {
+      directory: resolve(__dirname, 'dist')
+    },
+    // client: {
+    //   logging: 'info',
+    //   overlay: true, // Show compilation errors in the browser overlay
+    // },
+    // open: true, // Open the browser after the server starts
+    compress: true, // Enable gzip compression
+    historyApiFallback: true // Fallback to index.html for Single Page Applications
   },
   plugins: [
     new HtmlWebpackPlugin({
