@@ -2,8 +2,8 @@ import { resolve } from 'path';
 import CopyPlugin from 'copy-webpack-plugin'; // eslint-disable-line import/default
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { type Configuration } from 'webpack';
 import { GenerateSW } from 'workbox-webpack-plugin';
+import type { Configuration } from 'webpack';
 
 const NODE_ENV =
   process.env.NODE_ENV === 'production' ? 'production' : 'development';
