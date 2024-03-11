@@ -20,8 +20,24 @@ export const initialState: AppState = {
   currentScreen: 'main',
   currentScoringTableTab: 'score',
   currentSettingsTab: 'rule',
-  appConfig: { theme: 'auto', tileColor: 'light', showBazoro: false },
+  appConfig: { theme: 'dark', tileColor: 'light', showBazoro: false },
   savedRules: {
+    抽象工作室房规: {
+      red: {
+        m: 1,
+        p: 2,
+        s: 1
+      },
+      honbaBonus: 100,
+      roundedMangan: false,
+      doubleWindFu: 4,
+      accumlatedYakuman: true,
+      multipleYakuman: true,
+      kokushi13DoubleYakuman: true,
+      suankoTankiDoubleYakuman: true,
+      daisushiDoubleYakuman: true,
+      pureChurenDoubleYakuman: true
+    },
     'Mリーグ (M.LEAGUE)': {
       red: {
         m: 1,

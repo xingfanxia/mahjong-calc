@@ -2,7 +2,7 @@ locale:
   name: 简体中文
 translation:
   header:
-    title: 麻雀得点計算機
+    title: 立直麻将算分器
     update: 更新
     help: 帮助
     scoring-table: 得分速查表

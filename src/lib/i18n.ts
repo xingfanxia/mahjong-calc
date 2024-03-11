@@ -27,14 +27,14 @@ export const initI18n = (params?: InitI18nParams): Promise<TFunction> =>
         return typeof lng === 'undefined'
           ? {
               resources: getResources(),
-              fallbackLng: 'en',
+              fallbackLng: 'zh-CN',
               interpolation: { escapeValue: false },
               debug: process.env.NODE_ENV === 'development'
             }
           : {
               resources: getResources(),
               lng,
-              fallbackLng: 'en',
+              fallbackLng: 'zh-CN',
               interpolation: { escapeValue: false },
               debug: process.env.NODE_ENV === 'development'
             };

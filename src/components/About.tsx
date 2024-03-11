@@ -38,7 +38,7 @@ export const About: FC = () => {
         </div>
       </div>
       <div className="flex">
-        <Link href="https://github.com/livewing/mahjong-calc">
+        <Link href="https://github.com/xingfanxia/mahjong-calc">
           <div className="flex items-center gap-2">
             <FaGithub size="1.8rem" />
             GitHub
@@ -46,7 +46,8 @@ export const About: FC = () => {
         </Link>
       </div>
       <p>
-        &copy; <Link href="https://livewing.net/">livewing.net</Link>
+        &copy; <Link href="https://livewing.net/">livewing.net</Link> Dockerized
+        and Modified by Xingfan Xia
       </p>
       <p>
         <Link href="https://github.com/livewing/mahjong-calc/blob/main/LICENSE">
