@@ -22,7 +22,7 @@ export const initialState: AppState = {
   currentSettingsTab: 'rule',
   appConfig: { theme: 'dark', tileColor: 'light', showBazoro: false },
   savedRules: {
-    抽象工作室房规: {
+    '抽象工作室房规': {
       red: {
         m: 1,
         p: 2,
