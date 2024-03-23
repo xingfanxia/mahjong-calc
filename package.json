@@ -9,6 +9,7 @@
     "lint": "eslint 'src/**/*.{ts,tsx}' webpack.config.ts && tsc --noEmit --project tsconfig.commonjs.json && tsc --noEmit",
     "lint:fix": "eslint --fix 'src/**/*.{ts,tsx}' webpack.config.ts && tsc --noEmit --project tsconfig.commonjs.json && tsc --noEmit",
     "prepare": "husky install",
+    "start": "node server.js",
     "test": "jest"
   },
   "keywords": [],
@@ -35,6 +36,7 @@
   "dependencies": {
     "copy-to-clipboard": "^3.3.2",
     "decomposer": "file:./wasm/decomposer/pkg",
+    "express": "^4.19.1",
     "i18next": "^22.0.5",
     "i18next-browser-languagedetector": "^7.0.1",
     "react": "^18.2.0",

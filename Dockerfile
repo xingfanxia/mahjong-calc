@@ -1,30 +1,29 @@
-FROM node:latest
+# Specify a concrete version of the Node.js image using an Alpine variant for reduced size
+FROM node:16-alpine
 
-# Create a new directory for the application and set it as
-# the working directory for the commands that follow
+# Create a new directory for the application
 WORKDIR /app
 
-# Copy package.json and package-lock.json (if available) to the image
-COPY package*.json ./
+# Set the path to include the cargo bin directory
+ENV PATH="/root/.cargo/bin:${PATH}"
 
-# Install Node.js dependencies defined in package.json
+# Install Rust, wasm-pack, and build essentials like gcc, make, libc-dev
+RUN apk add --no-cache curl build-base && \
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && \
+    . $HOME/.cargo/env && \
+    rustup default stable && \
+    cargo install wasm-pack
+
+# Copy package.json and package-lock.json (if available) to the image
+# and install Node.js dependencies defined in package.json
+COPY package*.json ./
 RUN npm install
 
-# Copy the entire project into the container
+# Copy the rest of your application source code
 COPY . .
 
-ENV PATH $PATH:/home/node/.cargo/bin
-
-# Install Rust and wasm-pack
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y \
-  && export PATH="$HOME/.cargo/bin:$PATH" \
-  && rustup default stable \
-  && cargo install wasm-pack
-
-ENV PATH="/root/.cache/.wasm-pack/.wasm-bindgen-cargo-install-0.2.92/bin:${PATH}"
-
-# Run the custom script to build WebAssembly, ensuring PATH is set
-RUN export PATH="$HOME/.cargo/bin:$PATH" && npm run build:wasm
-
+# Execute the script to build WebAssembly
+RUN npm run build:wasm
+RUN npm run build
 # Set the command to be executed when the Docker container starts
-CMD ["npm", "run", "dev"]
+CMD ["npm", "start"]

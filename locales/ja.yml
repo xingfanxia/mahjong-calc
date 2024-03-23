@@ -2,7 +2,7 @@ locale:
   name: 日本語
 translation:
   header:
-    title: 立直麻将算分器
+    title: 胖猫小肥立直麻将算分器
     update: アップデート
     help: ヘルプ
     scoring-table: 得点早見表

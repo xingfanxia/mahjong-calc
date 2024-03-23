@@ -11,7 +11,7 @@ Riichi-Mahjong score calculator app in the web browser.
 
 ## 実行 - Run
 
-[立直麻将算分器](https://mahjong-calc.livewing.net/)
+[胖猫小肥立直麻将算分器](https://mahjong-calc.livewing.net/)
 
 This app is available in Japanese, English, Simplified Chinese, and Korean. To translate the app to a new language, see [CONTRIBUTING.md](./CONTRIBUTING.md).
 
