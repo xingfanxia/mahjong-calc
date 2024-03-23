@@ -21,22 +21,10 @@ type InitI18nParams = Partial<{
 export const initI18n = (params?: InitI18nParams): Promise<TFunction> =>
   (params?.useDetector ?? true ? use(LanguageDetector) : i18next)
     .use(initReactI18next)
-    .init(
-      (() => {
-        const lng = params?.lng;
-        return typeof lng === 'undefined'
-          ? {
-              resources: getResources(),
-              fallbackLng: 'zh-CN',
-              interpolation: { escapeValue: false },
-              debug: process.env.NODE_ENV === 'development'
-            }
-          : {
-              resources: getResources(),
-              lng,
-              fallbackLng: 'zh-CN',
-              interpolation: { escapeValue: false },
-              debug: process.env.NODE_ENV === 'development'
-            };
-      })()
-    );
+    .init({
+      resources: getResources(),
+      lng: 'zh-CN', // Always set to 'zh-CN'
+      fallbackLng: 'zh-CN', // Fallback language is also 'zh-CN'
+      interpolation: { escapeValue: false },
+      debug: process.env.NODE_ENV === 'development'
+    });
